@@ -1,0 +1,50 @@
+# === 操作系统文件 ===
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# === Hexo 生成 & 缓存 ===
+db.json
+public/
+.deploy_git/
+.deploy*/
+_multiconfig.yml
+
+# === 主题（由 CI 克隆安装） ===
+themes/*/
+!themes/.gitkeep
+
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+yarn.lock
+
+# === 构建脚本备份 ===
+backup_*/
+
+# === 编辑器 / IDE ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# === 环境变量 ===
+.env
+.env.local
+.env.*.local
+
+# === 日志 ===
+*.log
+logs/
+
+# === Claude Code ===
+.claude/
+CLAUDE.md
+
+_config.anzhiyu.yml

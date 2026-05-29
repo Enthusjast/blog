@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><%= config.title %></title>
+  <link href="<%= config.url %>/"/>
+  <updated><%= new Date().toISOString() %></updated>
+  <author><name><%= config.author %></name></author>
+  <id><%= config.url %>/</id>
+  <icon><%= config.url %>/<%= theme.favicon || 'icon.png' %></icon>
+  
+  <% page.posts.each(function(item) { %>
+  <entry>
+    <title><%= item.title %></title>
+    <link href="<%= config.url %><%= item.path %>"/>
+    <id><%= config.url %><%= item.path %></id>
+    <updated><%= item.updated.toISOString() %></updated>
+    <published><%= item.date.toISOString() %></published>
+    <author><name><%= item.author || config.author %></name></author>
+    <content type="html"><![CDATA[
+      <%- item.content %>
+    ]]></content>
+    <% if (item.tags && item.tags.length) { %>
+    <% item.tags.forEach(function(tag) { %>
+    <category term="<%= tag %>" scheme="<%= config.url %>/tags/<%= tag %>/"/>
+    <% }); %>
+    <% } %>
+    <% if (item.categories && item.categories.length) { %>
+    <% item.categories.forEach(function(cat) { %>
+    <category term="<%= cat %>" scheme="<%= config.url %>/categories/<%= cat %>/"/>
+    <% }); %>
+    <% } %>
+  </entry>
+  <% }); %>
+</feed>
